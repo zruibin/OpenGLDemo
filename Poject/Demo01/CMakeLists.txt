@@ -41,24 +41,26 @@ set(GLFW_INCLUDEDIR "${GLFW_ROOT}/include")
 set(GLFW_LIBRARYDIR "${GLFW_ROOT}/lib")
 
 set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/../lib/glad")
+set(GLAD_INCLUDEDIR "${GLAD_ROOT}/include")
+set(GLAD_LIBRARYDIR "${GLAD_ROOT}/lib")
 
 # 相当于g++选项中的-I参数的作用
 INCLUDE_DIRECTORIES(
     ${CMAKE_SOURCE_DIR}
     ${GLFW_INCLUDEDIR}
+    ${GLAD_INCLUDEDIR}
 )
 # 相当于g++命令的-L选项的作用
 LINK_DIRECTORIES(
     ${GLFW_LIBRARYDIR}
+    ${GLAD_LIBRARYDIR}
 )
 
 LINK_LIBRARIES(pthread dl)
 
-file(GLOB_RECURSE GLAD_HEADERS ${GLAD_ROOT}/ *.h)
+# file(GLOB_RECURSE GLAD_HEADERS ${GLAD_ROOT}/ *.h)
 # file(GLOB_RECURSE GLAD_SOURCES RELATIVE ${GLAD_ROOT}/ *.c)
-set(GLAD_SOURCES ${GLAD_ROOT}/glad.c)
-
-message(${GLAD_HEADERS})
+# set(GLAD_SOURCES ${GLAD_ROOT}/glad.c)
 
 set(HEADERS
 )
@@ -69,13 +71,12 @@ set(SOURCES
 
 source_group(TREE "${CMAKE_SOURCE_DIR}" FILES ${HEADERS} ${SOURCES})
 
-source_group(glad FILES ${GLAD_HEADERS} ${GLAD_SOURCES})
-
+# source_group(glad FILES ${GLAD_HEADERS} ${GLAD_SOURCES})
 # add_subdirectory(glad)
 
 set(TARGET main)
 
-add_executable(${TARGET} ${HEADERS} ${SOURCES} ${GLAD_HEADERS} ${GLAD_SOURCES})
+add_executable(${TARGET} ${HEADERS} ${SOURCES})
 
 target_link_libraries(${TARGET} PRIVATE 
 "-framework Cocoa" 
@@ -83,5 +84,6 @@ target_link_libraries(${TARGET} PRIVATE
 "-framework IOKit"
 "-framework CoreFoundation" 
 libglfw3.a
+libglad.a
 )
 
