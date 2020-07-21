@@ -10,9 +10,12 @@ set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/../lib/glad")
 set(GLAD_INCLUDEDIR "${GLAD_ROOT}/include")
 set(GLAD_LIBRARYDIR "${GLAD_ROOT}/lib")
 
+set(INCLUDEDIR "${CMAKE_SOURCE_DIR}/../lib")
+
 # 相当于g++选项中的-I参数的作用
 INCLUDE_DIRECTORIES(
     ${CMAKE_SOURCE_DIR}
+    ${INCLUDEDIR}
     ${GLFW_INCLUDEDIR}
     ${GLAD_INCLUDEDIR}
 )
