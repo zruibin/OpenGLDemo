@@ -21,5 +21,4 @@ source_group(TREE "${CMAKE_SOURCE_DIR}" FILES ${HEADERS} ${SOURCES})
 # source_group(Common FILES ${Common})
 
 
-set(OUTPUT_DIR "${CMAKE_BINARY_DIR}")
-install(DIRECTORY "./resources" DESTINATION "${OUTPUT_DIR}")
+include(../resources/res.cmake)
