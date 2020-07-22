@@ -41,6 +41,11 @@ public:
     float MouseSensitivity;
     float Zoom;
 
+    virtual ~Camera() 
+    {
+        // std::cout<<"Camera Destructor"<<std::endl;
+    }
+
     Camera() = default;
     
     // constructor with vectors

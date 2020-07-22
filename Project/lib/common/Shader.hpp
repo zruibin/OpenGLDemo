@@ -15,6 +15,11 @@ class Shader
 public:
     unsigned int ID;
     
+    virtual ~Shader() 
+    {
+        // std::cout<<"Shader Destructor"<<std::endl;
+    }
+
     Shader() = default;
     
     Shader(const char* vertexPath,
