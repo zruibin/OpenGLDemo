@@ -10,6 +10,10 @@ set(GLAD_ROOT "${CMAKE_SOURCE_DIR}/../lib/glad")
 set(GLAD_INCLUDEDIR "${GLAD_ROOT}/include")
 set(GLAD_LIBRARYDIR "${GLAD_ROOT}/lib")
 
+set(ASSIMP_ROOT "${CMAKE_SOURCE_DIR}/../lib/assimp")
+set(ASSIMP_INCLUDEDIR "${ASSIMP_ROOT}/include")
+set(ASSIMP_LIBRARYDIR "${ASSIMP_ROOT}/lib")
+
 set(INCLUDEDIR "${CMAKE_SOURCE_DIR}/../lib")
 
 # 相当于g++选项中的-I参数的作用
@@ -18,9 +22,11 @@ INCLUDE_DIRECTORIES(
     ${INCLUDEDIR}
     ${GLFW_INCLUDEDIR}
     ${GLAD_INCLUDEDIR}
+    ${ASSIMP_INCLUDEDIR}
 )
 # 相当于g++命令的-L选项的作用
 LINK_DIRECTORIES(
     ${GLFW_LIBRARYDIR}
     ${GLAD_LIBRARYDIR}
+    ${ASSIMP_LIBRARYDIR}
 )
