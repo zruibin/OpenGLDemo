@@ -17,7 +17,7 @@
 
 #include "Macros.h"
 
-//https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/01%20Depth%20testing/
+//https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/02%20Stencil%20testing/
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);

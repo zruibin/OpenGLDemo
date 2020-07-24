@@ -19,7 +19,7 @@
 
 #include "Macros.h"
 
-//https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/01%20Depth%20testing/
+//https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/03%20Blending/
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
