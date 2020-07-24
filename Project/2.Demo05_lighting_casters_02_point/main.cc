@@ -40,6 +40,8 @@ bool firstMouse = true;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
+// lighting
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 int main()
 {
@@ -189,13 +191,16 @@ int main()
         
         // be sure to activate shader when setting uniforms/drawing objects
         objectShader->use();
-        objectShader->setVec3("light.position", -0.2f, -1.0f, -0.3f);
+        objectShader->setVec3("light.position", lightPos);
         objectShader->setVec3("viewPos", camera.Position);
         
         // light properties
         objectShader->setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
         objectShader->setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         objectShader->setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        objectShader->setFloat("light.constant", 1.0f);
+        objectShader->setFloat("light.linear", 0.09f);
+        objectShader->setFloat("light.quadratic", 0.032f);
 
         // material properties
         objectShader->setFloat("material.shininess", 32.0f);
@@ -232,16 +237,16 @@ int main()
 
         
         // also draw the lamp object
-//        lightShader->use();
-//        lightShader->setMat4("projection", projection);
-//        lightShader->setMat4("view", view);
-//        model = glm::mat4(1.0f);
-//        model = glm::translate(model, lightPos);
-//        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-//        lightShader->setMat4("model", model);
-//
-//        glBindVertexArray(lightCubeVAO);
-//        glDrawArrays(GL_TRIANGLES, 0, 36);
+        lightShader->use();
+        lightShader->setMat4("projection", projection);
+        lightShader->setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos);
+        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        lightShader->setMat4("model", model);
+
+        glBindVertexArray(lightCubeVAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
         
         
         glfwSwapBuffers(window);
